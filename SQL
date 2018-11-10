@@ -29,8 +29,8 @@ CREATE TABLE Nekretnina (
 );
 
 create table Prodaje_se(
-	Klijent_id INTEGER PRIMARY KEY,
-    Sifra_nekretnine INTEGER NOT NULL,
+	Klijent_id INTEGER NOT NULL,
+    Sifra_nekretnine INTEGER PRIMARY KEY,
     Agent_id INTEGER NOT NULL,
     datum_kupovine VARCHAR(50),
     cena INTEGER,
