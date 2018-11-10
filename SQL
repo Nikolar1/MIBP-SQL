@@ -1,0 +1,42 @@
+create database if not exists GSP;
+create database if not exists AirSerbia;
+create database if not exists UNS;
+create database if not exists muzicka;
+create database if not exists nekretnine;
+
+use nekretnine;
+CREATE TABLE Agent (
+    id INTEGER PRIMARY KEY,
+    ime VARCHAR(50),
+    prezime VARCHAR(50),
+    telefon INTEGER
+);
+
+CREATE TABLE Klijent (
+    id INTEGER PRIMARY KEY,
+    ime VARCHAR(50),
+    adresa VARCHAR(50),
+    telefon INTEGER,
+    mesto VARCHAR(50)
+);
+
+CREATE TABLE Nekretnina (
+	sifra INTEGER PRIMARY KEY,
+    lokacija VARCHAR(50),
+    adresa VARCHAR(50),
+    povrsina INTEGER,
+    mesto VARCHAR(50)
+);
+
+create table Prodaje_se(
+	Klijent_id INTEGER PRIMARY KEY,
+    Sifra_nekretnine INTEGER NOT NULL,
+    Agent_id INTEGER NOT NULL,
+    datum_kupovine VARCHAR(50),
+    cena INTEGER,
+    procenat INTEGER,
+	CONSTRAINT FOREIGN KEY (Klijent_id) REFERENCES Klijent (id),
+	CONSTRAINT  FOREIGN KEY (Sifra_nekretnine) REFERENCES Nekretnina (sifra),
+    CONSTRAINT  FOREIGN KEY (Agent_id) REFERENCES Agent (id)
+);
+
